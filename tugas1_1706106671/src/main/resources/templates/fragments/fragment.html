@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head th:fragment="head">
+		<title th:text="${title}">Index</title>
+		<link rel="stylesheet" type="text/css" href="/DataTables/datatables.min.css"/>
+		<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="/css/bootstrap-grid.min.css"/>
+		<link rel="stylesheet" href="/css/bootstrap-reboot.min.css"/>
+		<script type="text/javascript" src="/js/jquery/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="/DataTables/datatables.min.js"></script>
+		<script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
+		<script type="text/javascript" src="/js/bootstrap.min.js"></script>	
+	</head>
+
+	<body>
+
+		<nav th:fragment="header" class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<a class="navbar-brand" href="#">SI Kemahasiswaan</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarSupportedContent"
+				aria-control="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+			</button>
+			
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="/">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/mahasiswa/tambah">Tambah Mahasiswa</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/kelulusan">Kelulusan Mahasiswa</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/mahasiswa/cari">Cari Mahasiswa</a>
+					</li>
+				</ul>		
+			</div>
+		</nav>
+
+		<form th:fragment="formCariNpm" action="/mahasiswa" method="get">
+			<div>
+				<input type="text" name="npm" />
+			</div>
+			<div>
+				<button type="submit" name="action" value="Lihat">Lihat</button>
+			</div>	
+		</form>
+
+	
+	</body>
+</html>
