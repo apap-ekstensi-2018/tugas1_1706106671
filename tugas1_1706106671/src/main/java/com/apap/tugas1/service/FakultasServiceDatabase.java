@@ -12,12 +12,13 @@ public class FakultasServiceDatabase implements FakultasService {
 
 	@Autowired
 	private FakultasMapper fakultasMapper;
-	
+	@Autowired
+	private UniversitasService universitasDAO;
 	@Override
 	public FakultasModel selectFakultas(int id) {
 		FakultasModel res = fakultasMapper.selectFakultas(id); 
 		if(res!=null) {
-			
+			res.setUniversitas(universitasDAO.selectUniversitas(res.getId_univ()));
 		}
 		return res;
 	}

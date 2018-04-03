@@ -7,10 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class FakultasModel {
+public class UniversitasModel {
 	private int id;
-	private String kode_fakultas;
-	private String nama_fakultas;
-	private int id_univ;
-	private UniversitasModel universitas;
+	private String kode_univ;
+	private String nama_univ;
 }
