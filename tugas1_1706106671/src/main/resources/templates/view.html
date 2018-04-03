@@ -21,11 +21,11 @@
 				            </tr>
 				            <tr>
 				                <td>Tempat/Tanggal Lahir</td>
-				                <td th:text="${mahasiswa.tempatLahir}+', '+${mahasiswa.tanggalLahir}"></td>
+				                <td th:text="${mahasiswa.tempat_lahir}+', '+${mahasiswa.tanggal_lahir}"></td>
 				            </tr>
 				            <tr>
 				                <td>Program Studi</td>
-				                <td th:text="${mahasiswa.nama}"></td>
+				                <td th:text="${mahasiswa.program_studi.nama_prodi}"></td>
 				            </tr>
 				            <tr>
 				                <td>Fakultas</td>
@@ -37,7 +37,7 @@
 				            </tr>
 				            <tr>
 				                <td>Jenis Kelamin</td>
-				                <td th:text="${mahasiswa.jenisKelamin==0} ? 'Wanita' : 'Pria'"></td>
+				                <td th:text="${mahasiswa.jenis_kelamin==0} ? 'Wanita' : 'Pria'"></td>
 				            </tr>
 				            <tr>
 				                <td>Agama</td>
@@ -45,15 +45,15 @@
 				            </tr>
 				            <tr>
 				                <td>Golongan Darah</td>
-				                <td th:text="${mahasiswa.golonganDarah}"></td>
+				                <td th:text="${mahasiswa.golongan_darah}"></td>
 				            </tr>
 				            <tr>
 				                <td>Tahun Masuk</td>
-				                <td th:text="${mahasiswa.tahunMasuk}"></td>
+				                <td th:text="${mahasiswa.tahun_masuk}"></td>
 				            </tr>
 				            <tr>
 				                <td>Jalur Masuk</td>
-				                <td th:text="${mahasiswa.jalurMasuk}"></td>
+				                <td th:text="${mahasiswa.jalur_masuk}"></td>
 				            </tr>
 				            <tr>
 				                <td>Status</td>
