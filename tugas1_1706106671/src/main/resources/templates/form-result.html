@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/fragment :: head">
+	</head>
+	<body>
+		<nav th:replace="fragments/fragment :: header">
+		</nav>
+	    	<h1>Sukses!</h1>
+	    <h3 th:text="'Mahasiswa dengan NPM ' + ${npm} + ' berhasil '+(${is_new} ? 'ditambahkan':'diubah')"></h3>
+    </body>
+</html>
