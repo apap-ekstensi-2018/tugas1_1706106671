@@ -8,9 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MahasiswaModel {
-	private int id;
-	private int npm_counter;
-	private String npm_without_counter;
+	private Long id;
 	private String npm;
 	private String nama;
 	private String tempat_lahir;
@@ -23,6 +21,8 @@ public class MahasiswaModel {
 	private String jalur_masuk;
 	private int id_prodi;
 	private ProgramStudiModel program_studi;
+	private int npm_counter;
+	private String npm_without_counter;
 
 	public void generateNpmWithoutCounter() {
 		String last2thnmsk = this.tahun_masuk.substring(this.tahun_masuk.length()-2, this.tahun_masuk.length());
@@ -51,7 +51,7 @@ public class MahasiswaModel {
 	
 	public void addCounterToNpm(int counter) {
 		String count = "";
-		if((npm==null || npm.length()==9) && counter<1000) {
+		if((npm==null || npm_without_counter.length()==9) && counter<1000) {
 			if(counter<1000 && counter>99) {
 				count = Integer.toString(counter);
 			}else if(counter>9) {

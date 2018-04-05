@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.apap.tugas1.model.MahasiswaModel;
 
@@ -26,6 +27,13 @@ public interface MahasiswaMapper {
     								+ "#{golongan_darah}, #{status}, #{tahun_masuk}, "
     								+ "#{jalur_masuk}, #{id_prodi})")
     boolean insertStudent(MahasiswaModel mahasiswa);
+    
+    @Update("UPDATE  mahasiswa SET npm=#{npm}, nama=#{nama}, tempat_lahir=#{tempat_lahir}, "
+			+ "tanggal_lahir=#{tanggal_lahir}, jenis_kelamin=#{jenis_kelamin}, agama=#{agama}, "
+			+ "golongan_darah=#{golongan_darah}, status=#{status}, tahun_masuk=#{tahun_masuk}, "
+			+ "jalur_masuk=#{jalur_masuk}, id_prodi=#{id_prodi} "
+			+ "WHERE id=#{id}")
+    boolean updateMahasiswa(MahasiswaModel mahasiswa);
     
     @Select("select cast(right(npm,3) as unsigned) as npm_counter "
     			+ "from mahasiswa "

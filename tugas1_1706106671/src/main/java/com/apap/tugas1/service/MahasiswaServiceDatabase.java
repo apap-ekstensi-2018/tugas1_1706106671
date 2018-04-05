@@ -52,4 +52,13 @@ public class MahasiswaServiceDatabase implements MahasiswaService {
 		return mahasiswaMapper.insertStudent(mahasiswa);
 	}
 
+
+	@Override
+	public boolean updateMahasiswa(MahasiswaModel mahasiswa) {
+		log.info("update mahasiswa id : "+mahasiswa.getId());
+		boolean res = mahasiswaMapper.updateMahasiswa(mahasiswa);
+		log.info("success : "+res);
+		return res;
+	}
+
 }

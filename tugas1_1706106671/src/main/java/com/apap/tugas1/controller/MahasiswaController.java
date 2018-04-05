@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -53,6 +54,7 @@ public class MahasiswaController {
 		model.addAttribute("title","Tambah Mahasiswa");
 		model.addAttribute("formTitle","Tambah Mahasiswa");
 		model.addAttribute("mahasiswa",new MahasiswaModel());
+		model.addAttribute("action_path","/mahasiswa/tambah");
 		return "form";
     }
 	
@@ -71,6 +73,34 @@ public class MahasiswaController {
 		
 		model.addAttribute("npm",mahasiswa.getNpm());
 		model.addAttribute("is_new",true);
+		return "form-result";
+    }
+	
+
+    @GetMapping("/mahasiswa/ubah/{npm}")
+    public String ubahMahasiswa (Model model,  @PathVariable(value = "npm") String npm)
+    {
+		model.addAttribute("title","Ubah Mahasiswa");
+		model.addAttribute("formTitle","Ubah Mahasiswa");
+    		MahasiswaModel mahasiswa = mahasiswaDAO.selectMahasiswa(npm);
+    		model.addAttribute("mahasiswa",mahasiswa);
+    		model.addAttribute("action_path","/mahasiswa/ubah/"+npm);
+    		
+    		return "form";
+    }
+    
+    @PostMapping("/mahasiswa/ubah/{npm}")
+    public String ubahMahasiswaPost (Model model,  @PathVariable(value = "npm") String npm, @ModelAttribute MahasiswaModel mahasiswa)
+    {
+		model.addAttribute("title","Ubah Mahasiswa");
+		log.info(String.valueOf(mahasiswa.getId_prodi()));
+		mahasiswa.setProgram_studi(programStudiDAO.selectProgramStudi((mahasiswa.getId_prodi())));
+		mahasiswa.generateNpmWithoutCounter();
+		mahasiswa.addCounterToNpm(mahasiswaDAO.selectLastCounterNpm(mahasiswa.getNpm_without_counter()+"%"));
+		mahasiswaDAO.updateMahasiswa(mahasiswa);
+		
+		model.addAttribute("npm",npm);
+		model.addAttribute("is_new",false);
 		return "form-result";
     }
 }
