@@ -38,4 +38,12 @@ public class MahasiswaController {
             return "not-found";
         }
     }
+	
+	@RequestMapping("/mahasiswa/tambah")
+    public String tambah (Model model,
+            @RequestParam(value = "npm", required = false) String npm)
+    {
+		model.addAttribute("title","Tambah Mahasiswa");
+		return "not-found";
+    }
 }
